@@ -1,0 +1,12 @@
+@import url("./variables.css");
+@import url("./reset.css");
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+#app {
+  min-height: 100vh;
+}
