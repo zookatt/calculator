@@ -1,0 +1,28 @@
+:root {
+  /* Typography */
+  --font-family: "Inter", sans-serif;
+
+  /* Colors */
+  --color-background: #131313;
+  --color-surface: #1f1f1f;
+  --color-button: #2c2c2e;
+
+  --color-primary: #ff9500;
+  --color-primary-hover: #ffa31a;
+
+  --color-text: #e5e2e1;
+  --color-text-muted: #a5a5a5;
+
+  --color-error: #ff453a;
+
+  /* Radius */
+  --radius-sm: .5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-button:
+    -3px -3px 8px rgb(255 255 255 / 5%),
+     5px 5px 12px rgb(0 0 0 / 45%);
+}
