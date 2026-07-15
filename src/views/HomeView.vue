@@ -1,15 +1,29 @@
+<script setup>
+import Header from "../components/layout/Header.vue";
+import BottomNavigation from "../components/layout/BottomNavigation.vue";
+import CalculatorSection from "../components/calculator/CalculatorSection.vue";
+import CurrencySection from "../components/currency/CurrencySection.vue";
+import WeatherSection from "../components/weather/WeatherSection.vue";
+</script>
+
 <template>
-  <main class="app-container">
-    <h1>Calculator</h1>
+  <main class="container py-3">
+    <Header />
+
+    <section>
+      <CalculatorSection />
+    </section>
+
+    <section>
+      <CurrencySection />
+    </section>
+
+    <section>
+      <WeatherSection />
+    </section>
+
+    <BottomNavigation />
   </main>
 </template>
 
-<script>
-    export default {
-        
-    }
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
