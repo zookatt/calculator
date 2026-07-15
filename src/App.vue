@@ -1,6 +1,5 @@
 <template>
-  <h1>Calculadora Multifuncional</h1>
-  
+  <RouterView />
 </template>
 
 <script setup></script>
