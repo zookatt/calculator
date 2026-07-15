@@ -1,6 +1,7 @@
 <script setup>
 import Header from "../components/layout/Header.vue";
 import BottomNavigation from "../components/layout/BottomNavigation.vue";
+import CalculatorSection from "../components/calculator/CalculatorSection.vue";
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import BottomNavigation from "../components/layout/BottomNavigation.vue";
     <Header />
 
     <section>
-      <!-- Calculator -->
+      <CalculatorSection />
     </section>
 
     <section>
