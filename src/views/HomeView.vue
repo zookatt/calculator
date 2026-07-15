@@ -3,6 +3,7 @@ import Header from "../components/layout/Header.vue";
 import BottomNavigation from "../components/layout/BottomNavigation.vue";
 import CalculatorSection from "../components/calculator/CalculatorSection.vue";
 import CurrencySection from "../components/currency/CurrencySection.vue";
+import WeatherSection from "../components/weather/WeatherSection.vue";
 </script>
 
 <template>
@@ -14,11 +15,11 @@ import CurrencySection from "../components/currency/CurrencySection.vue";
     </section>
 
     <section>
-     <CurrencySection/>
+      <CurrencySection />
     </section>
 
     <section>
-      <!-- Weather -->
+      <WeatherSection />
     </section>
 
     <BottomNavigation />
