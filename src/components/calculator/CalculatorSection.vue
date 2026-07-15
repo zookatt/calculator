@@ -15,6 +15,6 @@ import CalculatorKeypad from "./CalculatorKeypad.vue";
 .calculator {
   padding: 1.5rem;
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  background-color: var(--color-background);
 }
 </style>
