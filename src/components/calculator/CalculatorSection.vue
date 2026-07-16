@@ -2,6 +2,7 @@
 import CalculatorDisplay from "./CalculatorDisplay.vue";
 import CalculatorKeypad from "./CalculatorKeypad.vue";
 import { useCalculator } from "../../core/useCalculator";
+import { useCalculatorMemoryStore } from "../../stores/calculatorMemory";
 const {
   display,
   operation,
@@ -10,10 +11,34 @@ const {
   inputDecimal,
   selectOperator,
   equals,
+  setDisplay,
   clear,
 } = useCalculator();
 
+const memoryStore = useCalculatorMemoryStore();
+
 function handlePress(button) {
+  if (button === "M+") {
+    const currentNumber = Number(display.value);
+
+    memoryStore.save(currentNumber);
+    return;
+  }
+
+  if (button === "MR") {
+    const storedNumber = memoryStore.recall();
+
+    if (storedNumber !== null) {
+      setDisplay(storedNumber);
+    }
+
+    return;
+  }
+
+  if (button === "MC") {
+    memoryStore.clear();
+    return;
+  }
   const isDigit = /^\d$/.test(button);
 
   if (isDigit) {
