@@ -1,33 +1,104 @@
+<script setup>
+defineProps({
+  amount: {
+    type: String,
+    required: true,
+  },
+  fromCurrency: {
+    type: String,
+    required: true,
+  },
+  toCurrency: {
+    type: String,
+    required: true,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+defineEmits([
+  "update:amount",
+  "update:fromCurrency",
+  "update:toCurrency",
+  "swap",
+]);
+
+const currencies = ["EUR", "USD", "JPY"];
+</script>
+
 <template>
-  <form>
+  <form @submit.prevent>
     <div class="mb-3">
       <label for="amount" class="form-label"> Amount </label>
 
-      <input id="amount" class="form-control" type="number" placeholder="100" />
+      <input
+        id="amount"
+        class="form-control"
+        type="number"
+        min="0"
+        step="any"
+        :value="amount"
+        :disabled="disabled"
+        data-testid="currency-amount"
+        @input="$emit('update:amount', $event.target.value)"
+      />
     </div>
 
     <div class="row g-3">
       <div class="col-5">
         <label for="from" class="form-label"> From </label>
 
-        <select id="from" class="form-select">
-          <option>EUR</option>
-          <option>USD</option>
-          <option>JPY</option>
+        <select
+          id="from"
+          class="form-select"
+          :value="fromCurrency"
+          :disabled="disabled"
+          data-testid="from-currency"
+          @change="$emit('update:fromCurrency', $event.target.value)"
+        >
+          <option
+            v-for="currency in currencies"
+            :key="currency"
+            :value="currency"
+          >
+            {{ currency }}
+          </option>
         </select>
       </div>
 
       <div class="col-2 d-flex align-items-end justify-content-center">
-        <button class="btn btn-warning w-100" type="button">⇄</button>
+        <button
+          class="btn btn-warning w-100"
+          type="button"
+          aria-label="Swap currencies"
+          :disabled="disabled"
+          data-testid="swap-currencies"
+          @click="$emit('swap')"
+        >
+          ⇄
+        </button>
       </div>
 
       <div class="col-5">
         <label for="to" class="form-label"> To </label>
 
-        <select id="to" class="form-select">
-          <option>USD</option>
-          <option>EUR</option>
-          <option>JPY</option>
+        <select
+          id="to"
+          class="form-select"
+          :value="toCurrency"
+          :disabled="disabled"
+          data-testid="to-currency"
+          @change="$emit('update:toCurrency', $event.target.value)"
+        >
+          <option
+            v-for="currency in currencies"
+            :key="currency"
+            :value="currency"
+          >
+            {{ currency }}
+          </option>
         </select>
       </div>
     </div>

@@ -1,10 +1,46 @@
+<script setup>
+const props = defineProps({
+  convertedAmount: {
+    type: Number,
+    required: true,
+  },
+  rate: {
+    type: Number,
+    required: true,
+  },
+  fromCurrency: {
+    type: String,
+    required: true,
+  },
+  toCurrency: {
+    type: String,
+    required: true,
+  },
+});
+
+function formatAmount(amount) {
+  return amount.toFixed(2);
+}
+
+function formatRate(rate) {
+  return rate.toFixed(4);
+}
+</script>
+
 <template>
-  <div class="result mt-4">
+  <div class="result mt-4" aria-live="polite">
     <small>Converted amount</small>
 
-    <h3>108.45 USD</h3>
+    <h3 data-testid="converted-amount">
+      {{ formatAmount(props.convertedAmount) }}
+      {{ props.toCurrency }}
+    </h3>
 
-    <p class="mb-0">1 EUR = 1.0845 USD</p>
+    <p class="mb-0">
+      1 {{ props.fromCurrency }} =
+      {{ formatRate(props.rate) }}
+      {{ props.toCurrency }}
+    </p>
   </div>
 </template>
 
@@ -18,7 +54,7 @@
 
 small,
 p {
-  color: var(--color--background);
+  color: var(--color-text-muted);
 }
 
 h3 {
