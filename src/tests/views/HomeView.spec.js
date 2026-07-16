@@ -1,0 +1,53 @@
+import { mount } from "@vue/test-utils";
+import { createPinia } from "pinia";
+import { describe, expect, it } from "vitest";
+
+import HomeView from "../../views/HomeView.vue";
+
+describe("HomeView", () => {
+  function createWrapper() {
+    return mount(HomeView, {
+      global: {
+        plugins: [createPinia()],
+      },
+    });
+  }
+
+  it("renders the three main application sections", () => {
+    const wrapper = createWrapper();
+
+    expect(wrapper.find(".calculator").exists()).toBe(true);
+    expect(wrapper.find(".currency").exists()).toBe(true);
+    expect(wrapper.find("#weather").exists()).toBe(true);
+  });
+
+  it("renders the calculator required keys", () => {
+    const wrapper = createWrapper();
+    const keys = wrapper.findAll(".calc-button").map((button) => button.text());
+
+    expect(keys).toEqual(
+      expect.arrayContaining([
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "+",
+        "-",
+        "×",
+        "÷",
+        ".",
+        "=",
+        "CE",
+        "M+",
+        "MR",
+        "MC",
+      ]),
+    );
+  });
+});
