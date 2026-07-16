@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from "vue";
 
 import CurrencyForm from "./CurrencyForm.vue";
 import CurrencyOutput from "./CurrencyOutput.vue";
-import { convertCurrency } from "../../core/currencyConverter";
+import { convertCurrency } from "../../core/calculate/currencyConverter";
 import { getCurrencyRates } from "../../core/apis/currency-freaks/currencyService";
 
 const amount = ref("100");
@@ -45,12 +45,7 @@ const exchangeRate = computed(() => {
     return null;
   }
 
-  return convertCurrency(
-    1,
-    fromCurrency.value,
-    toCurrency.value,
-    rates.value,
-  );
+  return convertCurrency(1, fromCurrency.value, toCurrency.value, rates.value);
 });
 
 function swapCurrencies() {
@@ -103,10 +98,7 @@ onMounted(() => {
     </p>
 
     <CurrencyOutput
-      v-else-if="
-        convertedAmount !== null &&
-        exchangeRate !== null
-      "
+      v-else-if="convertedAmount !== null && exchangeRate !== null"
       :converted-amount="convertedAmount"
       :rate="exchangeRate"
       :from-currency="fromCurrency"

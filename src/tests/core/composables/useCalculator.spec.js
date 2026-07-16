@@ -2,7 +2,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { useCalculator } from "../../core/useCalculator";
+import { useCalculator } from "../../../core/composables/useCalculator";
 
 describe("useCalculator input", () => {
   it("starts with zero", () => {

@@ -1,7 +1,7 @@
 <script setup>
 import CalculatorDisplay from "./CalculatorDisplay.vue";
 import CalculatorKeypad from "./CalculatorKeypad.vue";
-import { useCalculator } from "../../core/useCalculator";
+import { useCalculator } from "../../core/composables/useCalculator";
 import { useCalculatorMemoryStore } from "../../stores/calculatorMemory";
 const {
   display,

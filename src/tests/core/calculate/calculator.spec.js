@@ -2,7 +2,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { calculate } from "../../core/calculator";
+import { calculate } from "../../../core/calculate/calculator";
 
 describe("calculate", () => {
   it("adds two numbers", () => {
@@ -22,20 +22,14 @@ describe("calculate", () => {
   });
 
   it("throws an error when dividing by zero", () => {
-    expect(() => calculate(8, 0, "÷")).toThrow(
-      "Cannot divide by zero",
-    );
+    expect(() => calculate(8, 0, "÷")).toThrow("Cannot divide by zero");
   });
 
   it("throws an error for an invalid operator", () => {
-    expect(() => calculate(2, 2, "%")).toThrow(
-      "Invalid operator",
-    );
+    expect(() => calculate(2, 2, "%")).toThrow("Invalid operator");
   });
 
   it("throws an error for invalid values", () => {
-    expect(() => calculate(Number.NaN, 2, "+")).toThrow(
-      "Invalid operation",
-    );
+    expect(() => calculate(Number.NaN, 2, "+")).toThrow("Invalid operation");
   });
 });
