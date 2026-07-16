@@ -1,8 +1,33 @@
-<template>
-  <div class="display">
-    <p class="operation">12 × 3</p>
+<script setup>
+defineProps({
+  display: {
+    type: String,
+    required: true,
+  },
+  operation: {
+    type: String,
+    default: "",
+  },
+  error: {
+    type: String,
+    default: "",
+  },
+});
+</script>
 
-    <h2 class="result">36</h2>
+<template>
+  <div class="display" aria-live="polite">
+    <p class="operation">
+      {{ operation || " " }}
+    </p>
+
+    <h2 class="result" data-testid="calculator-display">
+      {{ display }}
+    </h2>
+
+    <p v-if="error" class="error" role="alert">
+      {{ error }}
+    </p>
   </div>
 </template>
 
@@ -14,7 +39,8 @@
 }
 
 .operation {
-  margin-bottom: .5rem;
+  min-height: 1.5rem;
+  margin-bottom: 0.5rem;
   color: var(--color-text-muted);
 }
 
@@ -22,5 +48,11 @@
   margin: 0;
   font-size: clamp(3rem, 10vw, 4rem);
   font-weight: 300;
+}
+
+.error {
+  margin: 0.5rem 0 0;
+  color: var(--color-error);
+  font-size: 0.875rem;
 }
 </style>
