@@ -1,4 +1,6 @@
 <script setup>
+defineEmits(["press"]);
+
 const buttons = [
   "MC",
   "MR",
@@ -23,14 +25,35 @@ const buttons = [
 ];
 
 const operators = ["+", "-", "×", "÷", "="];
+
+const buttonLabels = {
+  MC: "clear memory",
+  MR: "recall memory",
+  "M+": "save to memory",
+  "÷": "divide",
+  "×": "multiply",
+  "-": "subtract",
+  "+": "add",
+  CE: "clear calculator",
+  ".": "decimal point",
+  "=": "equals",
+};
+
+function getButtonLabel(button) {
+  return buttonLabels[button] || button;
+}
 </script>
 
 <template>
   <div class="row g-2 mt-4">
     <div v-for="button in buttons" :key="button" class="col-3">
       <button
+        type="button"
         class="calc-button w-100"
         :class="{ operator: operators.includes(button) }"
+        :aria-label="getButtonLabel(button)"
+        :data-testid="`key-${button}`"
+        @click="$emit('press', button)"
       >
         {{ button }}
       </button>
