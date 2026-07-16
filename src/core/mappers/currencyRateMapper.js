@@ -1,4 +1,4 @@
-import { CURRENCIES } from "../../tests/core/models/currencies";
+import { CURRENCIES } from "../models/currencies";
 
 export function mapCurrencyRates(apiRates) {
   const rates = {};

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { mapCurrencyRates } from "../../mappers/currencyRateMapper";
-import { CURRENCY_SYMBOLS } from "../../../tests/core/models/currencies";
+import { CURRENCY_SYMBOLS } from "../../models/currencies";
 
 const CURRENCY_API_URL = "https://api.currencyfreaks.com/v2.0/rates/latest";
 

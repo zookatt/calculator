@@ -1,5 +1,5 @@
 <script setup>
-import { CURRENCIES } from "../../tests/core/models/currencies";
+import { CURRENCIES } from "../../core/models/currencies";
 
 defineProps({
   amount: {
