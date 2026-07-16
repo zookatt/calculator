@@ -2,8 +2,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { convertCurrency } from "../../core/currencyConverter";
-
+import { convertCurrency } from "../../../core/calculate/currencyConverter";
 const rates = {
   USD: 1,
   EUR: 0.8,

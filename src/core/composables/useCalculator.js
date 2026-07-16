@@ -1,6 +1,6 @@
 import { computed, ref } from "vue";
 
-import { calculate } from "./calculator";
+import { calculate } from "../calculate/calculator";
 
 export function useCalculator() {
   const display = ref("0");
