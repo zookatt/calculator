@@ -1,4 +1,6 @@
 <script setup>
+import { CURRENCIES } from "../../tests/core/models/currencies";
+
 defineProps({
   amount: {
     type: String,
@@ -24,8 +26,6 @@ defineEmits([
   "update:toCurrency",
   "swap",
 ]);
-
-const currencies = ["EUR", "USD", "JPY"];
 </script>
 
 <template>
@@ -59,7 +59,7 @@ const currencies = ["EUR", "USD", "JPY"];
           @change="$emit('update:fromCurrency', $event.target.value)"
         >
           <option
-            v-for="currency in currencies"
+            v-for="currency in CURRENCIES"
             :key="currency"
             :value="currency"
           >
@@ -93,7 +93,7 @@ const currencies = ["EUR", "USD", "JPY"];
           @change="$emit('update:toCurrency', $event.target.value)"
         >
           <option
-            v-for="currency in currencies"
+            v-for="currency in CURRENCIES"
             :key="currency"
             :value="currency"
           >
