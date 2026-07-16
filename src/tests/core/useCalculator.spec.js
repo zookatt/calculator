@@ -220,3 +220,31 @@ describe("useCalculator operations", () => {
     expect(calculator.error.value).toBe("");
   });
 });
+describe("useCalculator display value", () => {
+  it("sets a valid number in the display", () => {
+    const calculator = useCalculator();
+
+    calculator.setDisplay(42);
+
+    expect(calculator.display.value).toBe("42");
+  });
+
+  it("does not set an invalid number", () => {
+    const calculator = useCalculator();
+
+    calculator.setDisplay(Number.NaN);
+
+    expect(calculator.display.value).toBe("0");
+  });
+
+  it("allows using the restored number", () => {
+    const calculator = useCalculator();
+
+    calculator.setDisplay(10);
+    calculator.selectOperator("+");
+    calculator.inputDigit("5");
+    calculator.equals();
+
+    expect(calculator.display.value).toBe("15");
+  });
+});

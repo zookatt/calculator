@@ -132,6 +132,16 @@ export function useCalculator() {
     return String(roundedResult);
   }
 
+  function setDisplay(number) {
+    if (!Number.isFinite(number)) {
+      return;
+    }
+
+    display.value = String(number);
+    error.value = "";
+    waitingForNumber.value = false;
+  }
+
   function clear() {
     display.value = "0";
     previousNumber.value = null;
@@ -148,6 +158,7 @@ export function useCalculator() {
     inputDecimal,
     selectOperator,
     equals,
+    setDisplay,
     clear,
   };
 }
