@@ -1,8 +1,19 @@
 import { mount } from "@vue/test-utils";
 import { createPinia } from "pinia";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import HomeView from "../../views/HomeView.vue";
+
+vi.mock(
+  "../../core/apis/currency-freaks/currencyService",
+  () => ({
+    getCurrencyRates: vi.fn().mockResolvedValue({
+      EUR: 0.8,
+      USD: 1,
+      JPY: 150,
+    }),
+  }),
+);
 
 describe("HomeView", () => {
   function createWrapper() {
