@@ -72,6 +72,8 @@ function handlePress(button) {
 
 <template>
   <section class="calculator">
+    <h2 class="visually-hidden">Calculator</h2>
+
     <CalculatorDisplay
       :display="display"
       :operation="operation"
@@ -84,8 +86,15 @@ function handlePress(button) {
 
 <style scoped>
 .calculator {
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  background-color: var(--color-background);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+@media (min-width: 48rem) {
+  .calculator {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+  }
 }
 </style>

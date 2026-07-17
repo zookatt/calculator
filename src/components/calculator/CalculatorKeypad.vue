@@ -45,7 +45,7 @@ function getButtonLabel(button) {
 </script>
 
 <template>
-  <div class="row g-2 mt-4">
+  <div class="row g-2 keypad">
     <div v-for="button in buttons" :key="button" class="col-3">
       <button
         type="button"
@@ -62,17 +62,40 @@ function getButtonLabel(button) {
 </template>
 
 <style scoped>
+.keypad {
+  margin-top: 0.75rem;
+}
+
 .calc-button {
   width: 100%;
-  aspect-ratio: 1;
+  min-height: 3rem;
   border: none;
-  border-radius: 3rem;
+  border-radius: var(--radius-full);
   background: var(--color-button);
   color: var(--color-text);
+  font-size: 0.9rem;
+  transition:
+    background-color 150ms ease,
+    transform 100ms ease;
+}
+
+.calc-button:active {
+  transform: scale(0.96);
 }
 
 .operator {
   background: var(--color-primary);
   color: var(--color-background);
+}
+
+@media (min-width: 30rem) {
+  .keypad {
+    margin-top: 1rem;
+  }
+
+  .calc-button {
+    min-height: 3.75rem;
+    font-size: 1rem;
+  }
 }
 </style>

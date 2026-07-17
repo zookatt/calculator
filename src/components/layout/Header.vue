@@ -1,37 +1,17 @@
 <template>
-  <header class="container py-3">
-    <div class="d-flex justify-content-between align-items-center">
-      <button class="header-button">☰</button>
-
-      <div class="brand">
-        <h1>Calculator</h1>
-      </div>
-
-      <button class="header-button">⚙</button>
-    </div>
+  <header class="app-header">
+    <h1>Calculator</h1>
   </header>
 </template>
 
 <style scoped>
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.app-header {
+  padding-block: 0.5rem 1rem;
+  text-align: center;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--color-primary);
-
-  display: grid;
-  place-items: center;
-}
-
-.header-button {
-  border: none;
-  background: transparent;
-  color: white;
+h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 6vw, 2rem);
 }
 </style>

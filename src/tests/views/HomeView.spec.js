@@ -19,6 +19,7 @@ vi.mock("../../core/apis/el-tiempo/weatherService", () => ({
     minTemperature: 15,
     maxTemperature: 22,
     image: "weather-image.svg",
+    imageAlt: "Rainy weather in Oviedo",
   }),
 }));
 
@@ -37,6 +38,20 @@ describe("HomeView", () => {
     expect(wrapper.find(".calculator").exists()).toBe(true);
     expect(wrapper.find(".currency").exists()).toBe(true);
     expect(wrapper.find(".weather").exists()).toBe(true);
+  });
+
+  it("places weather and currency before the calculator", () => {
+    const wrapper = createWrapper();
+
+    const panels = wrapper
+      .findAll(".dashboard-panel")
+      .map((panel) => panel.attributes("data-testid"));
+
+    expect(panels).toEqual([
+      "weather-panel",
+      "currency-panel",
+      "calculator-panel",
+    ]);
   });
 
   it("renders the calculator required keys", () => {

@@ -25,6 +25,31 @@ export function getWeatherImage(description) {
   return WEATHER_IMAGES.clear;
 }
 
+export function getWeatherLabel(description) {
+  const normalizedDescription = description.toLowerCase();
+
+  if (
+    normalizedDescription.includes("tormenta") ||
+    normalizedDescription.includes("granizo")
+  ) {
+    return "Stormy";
+  }
+
+  if (normalizedDescription.includes("lluvia")) {
+    return "Rainy";
+  }
+
+  if (normalizedDescription.includes("cubierto")) {
+    return "Overcast";
+  }
+
+  if (normalizedDescription.includes("nuboso")) {
+    return "Cloudy";
+  }
+
+  return "Clear";
+}
+
 export function mapAsturiasWeather(apiData) {
   const cities = apiData?.ciudades;
 
@@ -57,5 +82,6 @@ export function mapAsturiasWeather(apiData) {
     minTemperature,
     maxTemperature,
     image: getWeatherImage(description),
+    imageAlt: `${getWeatherLabel(description)} weather in ${capital.name}`,
   };
 }

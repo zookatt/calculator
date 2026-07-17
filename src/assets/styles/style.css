@@ -7,6 +7,23 @@ body {
   font-family: var(--font-family);
 }
 
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
 #app {
   min-height: 100vh;
 }

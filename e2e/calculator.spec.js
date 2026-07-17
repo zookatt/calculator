@@ -86,6 +86,8 @@ test("saves and recalls a number from memory", async ({ page }) => {
 });
 
 test("converts euros to dollars", async ({ page }) => {
+  await page.getByTestId("currency-toggle").click();
+
   await expect(page.getByTestId("converted-amount")).toHaveText(
     "125.00 USD",
   );
@@ -103,7 +105,7 @@ test("shows the weather in Asturias", async ({ page }) => {
   await expect(page.getByText("Max. 21°C")).toBeVisible();
 
   const weatherImage = page.getByRole("img", {
-    name: "Weather in Oviedo",
+    name: "Rainy weather in Oviedo",
   });
 
   await expect(weatherImage).toBeVisible();

@@ -31,6 +31,18 @@ describe("CurrencySection", () => {
     expect(getCurrencyRates).toHaveBeenCalledOnce();
   });
 
+  it("expands and collapses the converter", async () => {
+    const wrapper = mount(CurrencySection);
+    const toggle = wrapper.get('[data-testid="currency-toggle"]');
+
+    expect(toggle.attributes("aria-expanded")).toBe("false");
+
+    await toggle.trigger("click");
+
+    expect(toggle.attributes("aria-expanded")).toBe("true");
+    expect(wrapper.get("#currency-content").isVisible()).toBe(true);
+  });
+
   it("shows the converted amount", async () => {
     const wrapper = mount(CurrencySection);
 

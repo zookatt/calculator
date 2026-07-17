@@ -12,6 +12,7 @@ const toCurrency = ref("USD");
 const rates = ref(null);
 const loading = ref(true);
 const apiError = ref("");
+const isExpanded = ref(false);
 
 const amountError = computed(() => {
   const numericAmount = Number(amount.value);
@@ -75,59 +76,112 @@ onMounted(() => {
 
 <template>
   <section id="currency" class="currency">
-    <h2 class="title">Currency Converter</h2>
+    <button
+      class="currency-toggle"
+      type="button"
+      aria-controls="currency-content"
+      :aria-expanded="isExpanded"
+      data-testid="currency-toggle"
+      @click="isExpanded = !isExpanded"
+    >
+      <span class="title">Currency Converter</span>
+      <span class="toggle-icon" aria-hidden="true">
+        {{ isExpanded ? "−" : "+" }}
+      </span>
+    </button>
 
-    <CurrencyForm
-      v-model:amount="amount"
-      v-model:from-currency="fromCurrency"
-      v-model:to-currency="toCurrency"
-      :disabled="loading"
-      @swap="swapCurrencies"
-    />
+    <div id="currency-content" v-show="isExpanded" class="currency-content">
+      <CurrencyForm
+        v-model:amount="amount"
+        v-model:from-currency="fromCurrency"
+        v-model:to-currency="toCurrency"
+        :disabled="loading"
+        @swap="swapCurrencies"
+      />
 
-    <p v-if="loading" role="status" class="message">
-      Loading exchange rates...
-    </p>
+      <p v-if="loading" role="status" class="message">
+        Loading exchange rates...
+      </p>
 
-    <p v-else-if="apiError" role="alert" class="error">
-      {{ apiError }}
-    </p>
+      <p v-else-if="apiError" role="alert" class="error">
+        {{ apiError }}
+      </p>
 
-    <p v-else-if="amountError" role="alert" class="error">
-      {{ amountError }}
-    </p>
+      <p v-else-if="amountError" role="alert" class="error">
+        {{ amountError }}
+      </p>
 
-    <CurrencyOutput
-      v-else-if="convertedAmount !== null && exchangeRate !== null"
-      :converted-amount="convertedAmount"
-      :rate="exchangeRate"
-      :from-currency="fromCurrency"
-      :to-currency="toCurrency"
-    />
+      <CurrencyOutput
+        v-else-if="convertedAmount !== null && exchangeRate !== null"
+        :converted-amount="convertedAmount"
+        :rate="exchangeRate"
+        :from-currency="fromCurrency"
+        :to-currency="toCurrency"
+      />
+    </div>
   </section>
 </template>
 
 <style scoped>
 .currency {
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
+  height: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
   background: var(--color-surface);
 }
 
+.currency-toggle {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  text-align: start;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .title {
-  margin-bottom: 1.5rem;
+  margin: 0;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-weight: 600;
+}
+
+.toggle-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  background: var(--color-button);
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  place-items: center;
+}
+
+.currency-content {
+  margin-top: 0.75rem;
+}
+
+.message,
+.error {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  text-align: center;
 }
 
 .message {
-  margin: 1rem 0 0;
   color: var(--color-text-muted);
-  text-align: center;
 }
 
 .error {
-  margin: 1rem 0 0;
   color: var(--color-error);
-  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .currency {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
 }
 </style>

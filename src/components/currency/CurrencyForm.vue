@@ -29,8 +29,8 @@ defineEmits([
 </script>
 
 <template>
-  <form @submit.prevent>
-    <div class="mb-3">
+  <form class="currency-form" @submit.prevent>
+    <div class="form-field">
       <label for="amount" class="form-label"> Amount </label>
 
       <input
@@ -46,8 +46,8 @@ defineEmits([
       />
     </div>
 
-    <div class="row g-3">
-      <div class="col-5">
+    <div class="currency-fields">
+      <div class="form-field">
         <label for="from" class="form-label"> From </label>
 
         <select
@@ -68,20 +68,18 @@ defineEmits([
         </select>
       </div>
 
-      <div class="col-2 d-flex align-items-end justify-content-center">
-        <button
-          class="btn btn-warning w-100"
-          type="button"
-          aria-label="Swap currencies"
-          :disabled="disabled"
-          data-testid="swap-currencies"
-          @click="$emit('swap')"
-        >
-          ⇄
-        </button>
-      </div>
+      <button
+        class="swap-button"
+        type="button"
+        aria-label="Swap currencies"
+        :disabled="disabled"
+        data-testid="swap-currencies"
+        @click="$emit('swap')"
+      >
+        ⇄
+      </button>
 
-      <div class="col-5">
+      <div class="form-field">
         <label for="to" class="form-label"> To </label>
 
         <select
@@ -106,13 +104,50 @@ defineEmits([
 </template>
 
 <style scoped>
+.currency-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.form-field {
+  min-width: 0;
+}
+
 .form-label {
+  margin-bottom: 0.25rem;
   color: var(--color-text-muted);
+  font-size: 0.75rem;
 }
 
 .form-control,
 .form-select {
+  min-width: 0;
+  padding: 0.45rem;
+  border-color: transparent;
   background: var(--color-button);
   color: var(--color-text);
+  font-size: 0.8rem;
+}
+
+.currency-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem minmax(0, 1fr);
+  gap: 0.25rem;
+  align-items: end;
+}
+
+.swap-button {
+  width: 2rem;
+  height: 2.25rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-weight: 700;
+}
+
+.swap-button:disabled {
+  opacity: 0.5;
 }
 </style>
