@@ -56,6 +56,7 @@ describe("getAsturiasWeather", () => {
       city: "Oviedo",
       minTemperature: 15,
       maxTemperature: 22,
+      imageAlt: "Rainy weather in Oviedo",
     });
   });
 

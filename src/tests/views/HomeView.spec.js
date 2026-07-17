@@ -19,6 +19,7 @@ vi.mock("../../core/apis/el-tiempo/weatherService", () => ({
     minTemperature: 15,
     maxTemperature: 22,
     image: "weather-image.svg",
+    imageAlt: "Rainy weather in Oviedo",
   }),
 }));
 

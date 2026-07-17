@@ -20,6 +20,10 @@ defineProps({
     type: String,
     required: true,
   },
+  imageAlt: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 
@@ -30,7 +34,7 @@ defineProps({
         <p class="location mb-1">{{ city }}, {{ location }}</p>
       </div>
 
-      <img class="weather-icon" :src="image" :alt="`Weather in ${city}`" />
+      <img class="weather-icon" :src="image" :alt="imageAlt" />
     </div>
 
     <div class="temperature-range">
@@ -70,7 +74,7 @@ defineProps({
 }
 
 .location {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   overflow-wrap: anywhere;
 }
 
@@ -82,7 +86,7 @@ defineProps({
 }
 
 .range {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 @media (min-width: 30rem) {

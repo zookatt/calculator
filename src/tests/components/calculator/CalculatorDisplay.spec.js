@@ -16,6 +16,7 @@ describe("CalculatorDisplay", () => {
     );
 
     expect(display.text()).toBe("36");
+    expect(display.element.tagName).toBe("OUTPUT");
   });
 
   it("shows the current operation", () => {

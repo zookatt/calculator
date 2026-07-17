@@ -56,7 +56,7 @@ function formatRate(rate) {
 small,
 p {
   color: var(--color-text-muted);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 h3 {

@@ -2,8 +2,6 @@
 @import url("./reset.css");
 
 body {
-  min-width: 20rem;
-  overflow-x: hidden;
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family);

@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   getWeatherImage,
+  getWeatherLabel,
   mapAsturiasWeather,
 } from "../../../core/mappers/weatherMapper";
 import { WEATHER_IMAGES } from "../../../core/models/weather";
@@ -45,6 +46,7 @@ describe("mapAsturiasWeather", () => {
       minTemperature: 14,
       maxTemperature: 21,
       image: WEATHER_IMAGES.rain,
+      imageAlt: "Rainy weather in Oviedo",
     });
   });
 
@@ -64,6 +66,12 @@ describe("mapAsturiasWeather", () => {
         ],
       }),
     ).toThrow("Asturias capital weather not found");
+  });
+});
+
+describe("getWeatherLabel", () => {
+  it("returns an accessible English weather label", () => {
+    expect(getWeatherLabel("Cubierto con lluvia")).toBe("Rainy");
   });
 });
 

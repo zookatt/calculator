@@ -46,6 +46,7 @@ onMounted(() => {
       :min-temperature="weather.minTemperature"
       :max-temperature="weather.maxTemperature"
       :image="weather.image"
+      :image-alt="weather.imageAlt"
     />
   </section>
 </template>
@@ -64,7 +65,7 @@ onMounted(() => {
 
 .section-label {
   color: var(--color-primary);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -77,7 +78,7 @@ onMounted(() => {
 
 .message,
 .error {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .message {

@@ -14,6 +14,7 @@ const weather = {
   minTemperature: 15,
   maxTemperature: 22,
   image: "weather-image.svg",
+  imageAlt: "Rainy weather in Oviedo",
 };
 
 describe("WeatherSection", () => {
@@ -48,7 +49,7 @@ describe("WeatherSection", () => {
     const image = wrapper.get("img");
 
     expect(image.attributes("src")).toBe("weather-image.svg");
-    expect(image.attributes("alt")).toContain("Weather in Oviedo");
+    expect(image.attributes("alt")).toBe("Rainy weather in Oviedo");
   });
 
   it("shows an error when the API fails", async () => {

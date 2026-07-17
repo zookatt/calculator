@@ -72,6 +72,8 @@ function handlePress(button) {
 
 <template>
   <section class="calculator">
+    <h2 class="visually-hidden">Calculator</h2>
+
     <CalculatorDisplay
       :display="display"
       :operation="operation"

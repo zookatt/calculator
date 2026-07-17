@@ -16,14 +16,18 @@ defineProps({
 </script>
 
 <template>
-  <div class="display" aria-live="polite">
+  <div class="display">
     <p class="operation">
       {{ operation || " " }}
     </p>
 
-    <h2 class="result" data-testid="calculator-display">
+    <output
+      class="result"
+      data-testid="calculator-display"
+      aria-live="polite"
+    >
       {{ display }}
-    </h2>
+    </output>
 
     <p v-if="error" class="error" role="alert">
       {{ error }}
@@ -45,6 +49,7 @@ defineProps({
 }
 
 .result {
+  display: block;
   margin: 0;
   font-size: clamp(3rem, 10vw, 4rem);
   font-weight: 300;
