@@ -39,7 +39,7 @@ describe("HomeView", () => {
     expect(wrapper.find(".weather").exists()).toBe(true);
   });
 
-  it("places currency and weather before the calculator", () => {
+  it("places weather and currency before the calculator", () => {
     const wrapper = createWrapper();
 
     const panels = wrapper
@@ -47,8 +47,8 @@ describe("HomeView", () => {
       .map((panel) => panel.attributes("data-testid"));
 
     expect(panels).toEqual([
-      "currency-panel",
       "weather-panel",
+      "currency-panel",
       "calculator-panel",
     ]);
   });
