@@ -39,6 +39,20 @@ describe("HomeView", () => {
     expect(wrapper.find(".weather").exists()).toBe(true);
   });
 
+  it("places currency and weather before the calculator", () => {
+    const wrapper = createWrapper();
+
+    const panels = wrapper
+      .findAll(".dashboard-panel")
+      .map((panel) => panel.attributes("data-testid"));
+
+    expect(panels).toEqual([
+      "currency-panel",
+      "weather-panel",
+      "calculator-panel",
+    ]);
+  });
+
   it("renders the calculator required keys", () => {
     const wrapper = createWrapper();
     const keys = wrapper.findAll(".calc-button").map((button) => button.text());
