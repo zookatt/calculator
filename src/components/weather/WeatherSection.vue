@@ -28,7 +28,7 @@ onMounted(() => {
 
 <template>
   <section id="weather" class="weather">
-    <div class="mb-3">
+    <div class="weather-title">
       <p class="section-label mb-1">Forecast</p>
       <h2 class="section-title mb-0">Weather</h2>
     </div>
@@ -52,20 +52,32 @@ onMounted(() => {
 
 <style scoped>
 .weather {
-  margin-top: 1.5rem;
+  height: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.weather-title {
+  margin-bottom: 0.25rem;
 }
 
 .section-label {
   color: var(--color-primary);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .section-title {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 4vw, 1.25rem);
   font-weight: 600;
+}
+
+.message,
+.error {
+  font-size: 0.75rem;
 }
 
 .message {
@@ -74,5 +86,12 @@ onMounted(() => {
 
 .error {
   color: var(--color-error);
+}
+
+@media (min-width: 48rem) {
+  .weather {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
 }
 </style>

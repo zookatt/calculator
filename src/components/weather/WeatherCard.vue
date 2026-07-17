@@ -43,25 +43,25 @@ defineProps({
 
 <style scoped>
 .weather-card {
-  padding: 1.5rem;
-  border: 1px solid rgb(255 255 255 / 8%);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
 .weather-header,
 .temperature-range {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
 }
 
 .weather-header {
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .temperature-range {
-  margin-top: 1.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.25rem;
 }
 
 .location,
@@ -70,16 +70,25 @@ defineProps({
 }
 
 .location {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
 }
 
 .weather-icon {
-  width: 4rem;
-  height: 4rem;
+  width: clamp(2.5rem, 12vw, 4rem);
+  height: clamp(2.5rem, 12vw, 4rem);
+  flex-shrink: 0;
   object-fit: contain;
 }
 
 .range {
-  font-size: 1rem;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 30rem) {
+  .temperature-range {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 </style>
