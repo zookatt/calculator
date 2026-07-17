@@ -1,25 +1,54 @@
+<script setup>
+defineProps({
+  location: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  minTemperature: {
+    type: Number,
+    required: true,
+  },
+  maxTemperature: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <article class="weather-card">
-    <div class="d-flex justify-content-between align-items-start mb-4">
+    <div class="weather-header">
       <div>
-        <p class="location mb-1">Asturias</p>
-        <h3 class="description mb-0">Clear sky</h3>
+        <p class="location mb-1">{{ city }}, {{ location }}</p>
+
+        <h3 class="description mb-0">
+          {{ description }}
+        </h3>
       </div>
 
-      <span class="weather-icon" aria-hidden="true">
-        ☀️
-      </span>
+      <img
+        class="weather-icon"
+        :src="image"
+        :alt="`Estado del cielo: ${description}`"
+      />
     </div>
 
-    <div class="d-flex justify-content-between align-items-end">
-      <p class="temperature mb-0">
-        22°C
-      </p>
+    <div class="temperature-range">
+      <p class="range mb-0">Min. {{ minTemperature }}°C</p>
 
-      <div class="text-end">
-        <p class="range mb-1">Min. 18°C</p>
-        <p class="range mb-0">Max. 26°C</p>
-      </div>
+      <p class="range mb-0">Max. {{ maxTemperature }}°C</p>
     </div>
   </article>
 </template>
@@ -29,17 +58,30 @@
   padding: 1.5rem;
   border: 1px solid rgb(255 255 255 / 8%);
   border-radius: var(--radius-lg);
-  background:
-    radial-gradient(
-      circle at top right,
-      rgb(255 149 0 / 16%),
-      transparent 10rem
-    ),
-    var(--color-surface);
+  background: var(--color-surface);
+}
+
+.weather-header,
+.temperature-range {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.weather-header {
+  align-items: flex-start;
+}
+
+.temperature-range {
+  margin-top: 1.5rem;
+}
+
+.location,
+.range {
+  color: var(--color-text-muted);
 }
 
 .location {
-  color: var(--color-text-muted);
   font-size: 0.875rem;
 }
 
@@ -49,17 +91,12 @@
 }
 
 .weather-icon {
-  font-size: 3rem;
-}
-
-.temperature {
-  font-size: clamp(2.75rem, 12vw, 4rem);
-  font-weight: 300;
-  line-height: 1;
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
 }
 
 .range {
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 </style>

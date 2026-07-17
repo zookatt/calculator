@@ -4,16 +4,24 @@ import { describe, expect, it, vi } from "vitest";
 
 import HomeView from "../../views/HomeView.vue";
 
-vi.mock(
-  "../../core/apis/currency-freaks/currencyService",
-  () => ({
-    getCurrencyRates: vi.fn().mockResolvedValue({
-      EUR: 0.8,
-      USD: 1,
-      JPY: 150,
-    }),
+vi.mock("../../core/apis/currency-freaks/currencyService", () => ({
+  getCurrencyRates: vi.fn().mockResolvedValue({
+    EUR: 0.8,
+    USD: 1,
+    JPY: 150,
   }),
-);
+}));
+
+vi.mock("../../core/apis/el-tiempo/weatherService", () => ({
+  getAsturiasWeather: vi.fn().mockResolvedValue({
+    location: "Asturias",
+    city: "Oviedo",
+    description: "Nuboso",
+    minTemperature: 15,
+    maxTemperature: 22,
+    image: "weather-image.svg",
+  }),
+}));
 
 describe("HomeView", () => {
   function createWrapper() {
