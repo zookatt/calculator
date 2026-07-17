@@ -54,7 +54,6 @@ export function mapAsturiasWeather(apiData) {
   return {
     location: capital.nameProvince,
     city: capital.name,
-    description,
     minTemperature,
     maxTemperature,
     image: getWeatherImage(description),

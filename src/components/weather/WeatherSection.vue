@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="weather" class="weather-section">
+  <section id="weather" class="weather">
     <div class="mb-3">
       <p class="section-label mb-1">Forecast</p>
       <h2 class="section-title mb-0">Weather</h2>
@@ -43,7 +43,6 @@ onMounted(() => {
       v-else-if="weather"
       :location="weather.location"
       :city="weather.city"
-      :description="weather.description"
       :min-temperature="weather.minTemperature"
       :max-temperature="weather.maxTemperature"
       :image="weather.image"
@@ -52,7 +51,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.weather-section {
+.weather {
   margin-top: 1.5rem;
 }
 

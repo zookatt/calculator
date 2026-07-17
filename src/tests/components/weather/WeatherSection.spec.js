@@ -4,17 +4,13 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import WeatherSection from "../../../components/weather/WeatherSection.vue";
 import { getAsturiasWeather } from "../../../core/apis/el-tiempo/weatherService";
 
-vi.mock(
-  "../../../core/apis/el-tiempo/weatherService",
-  () => ({
-    getAsturiasWeather: vi.fn(),
-  }),
-);
+vi.mock("../../../core/apis/el-tiempo/weatherService", () => ({
+  getAsturiasWeather: vi.fn(),
+}));
 
 const weather = {
   location: "Asturias",
   city: "Oviedo",
-  description: "Nuboso con lluvia",
   minTemperature: 15,
   maxTemperature: 22,
   image: "weather-image.svg",
@@ -40,7 +36,6 @@ describe("WeatherSection", () => {
     await flushPromises();
 
     expect(wrapper.text()).toContain("Oviedo, Asturias");
-    expect(wrapper.text()).toContain("Nuboso con lluvia");
     expect(wrapper.text()).toContain("Min. 15°C");
     expect(wrapper.text()).toContain("Max. 22°C");
   });
@@ -53,15 +48,11 @@ describe("WeatherSection", () => {
     const image = wrapper.get("img");
 
     expect(image.attributes("src")).toBe("weather-image.svg");
-    expect(image.attributes("alt")).toContain(
-      "Nuboso con lluvia",
-    );
+    expect(image.attributes("alt")).toContain("Weather in Oviedo");
   });
 
   it("shows an error when the API fails", async () => {
-    getAsturiasWeather.mockRejectedValue(
-      new Error("Network error"),
-    );
+    getAsturiasWeather.mockRejectedValue(new Error("Network error"));
 
     const wrapper = mount(WeatherSection);
 

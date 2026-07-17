@@ -42,7 +42,6 @@ describe("mapAsturiasWeather", () => {
     expect(result).toEqual({
       location: "Asturias",
       city: "Oviedo",
-      description: "Cubierto con lluvia",
       minTemperature: 14,
       maxTemperature: 21,
       image: WEATHER_IMAGES.rain,

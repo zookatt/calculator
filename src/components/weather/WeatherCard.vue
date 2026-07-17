@@ -8,10 +8,6 @@ defineProps({
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
   minTemperature: {
     type: Number,
     required: true,
@@ -32,17 +28,9 @@ defineProps({
     <div class="weather-header">
       <div>
         <p class="location mb-1">{{ city }}, {{ location }}</p>
-
-        <h3 class="description mb-0">
-          {{ description }}
-        </h3>
       </div>
 
-      <img
-        class="weather-icon"
-        :src="image"
-        :alt="`Estado del cielo: ${description}`"
-      />
+      <img class="weather-icon" :src="image" :alt="`Weather in ${city}`" />
     </div>
 
     <div class="temperature-range">
@@ -83,11 +71,6 @@ defineProps({
 
 .location {
   font-size: 0.875rem;
-}
-
-.description {
-  font-size: 1.1rem;
-  font-weight: 500;
 }
 
 .weather-icon {

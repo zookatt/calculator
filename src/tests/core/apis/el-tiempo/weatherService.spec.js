@@ -54,7 +54,6 @@ describe("getAsturiasWeather", () => {
     expect(weather).toMatchObject({
       location: "Asturias",
       city: "Oviedo",
-      description: "Nuboso con lluvia",
       minTemperature: 15,
       maxTemperature: 22,
     });
@@ -63,8 +62,6 @@ describe("getAsturiasWeather", () => {
   it("propagates network errors", async () => {
     axios.get.mockRejectedValue(new Error("Network error"));
 
-    await expect(getAsturiasWeather()).rejects.toThrow(
-      "Network error",
-    );
+    await expect(getAsturiasWeather()).rejects.toThrow("Network error");
   });
 });

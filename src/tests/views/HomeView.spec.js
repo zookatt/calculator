@@ -16,7 +16,6 @@ vi.mock("../../core/apis/el-tiempo/weatherService", () => ({
   getAsturiasWeather: vi.fn().mockResolvedValue({
     location: "Asturias",
     city: "Oviedo",
-    description: "Nuboso",
     minTemperature: 15,
     maxTemperature: 22,
     image: "weather-image.svg",
@@ -37,7 +36,7 @@ describe("HomeView", () => {
 
     expect(wrapper.find(".calculator").exists()).toBe(true);
     expect(wrapper.find(".currency").exists()).toBe(true);
-    expect(wrapper.find("#weather").exists()).toBe(true);
+    expect(wrapper.find(".weather").exists()).toBe(true);
   });
 
   it("renders the calculator required keys", () => {
