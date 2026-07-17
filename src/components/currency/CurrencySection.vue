@@ -109,25 +109,36 @@ onMounted(() => {
 
 <style scoped>
 .currency {
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
+  height: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
   background: var(--color-surface);
 }
 
 .title {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+}
+
+.message,
+.error {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 .message {
-  margin: 1rem 0 0;
   color: var(--color-text-muted);
-  text-align: center;
 }
 
 .error {
-  margin: 1rem 0 0;
   color: var(--color-error);
-  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .currency {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
 }
 </style>

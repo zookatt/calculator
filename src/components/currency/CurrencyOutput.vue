@@ -28,7 +28,7 @@ function formatRate(rate) {
 </script>
 
 <template>
-  <div class="result mt-4" aria-live="polite">
+  <div class="result" aria-live="polite">
     <small>Converted amount</small>
 
     <h3 data-testid="converted-amount">
@@ -46,8 +46,9 @@ function formatRate(rate) {
 
 <style scoped>
 .result {
-  padding: 1rem;
-  border-radius: var(--radius-md);
+  margin-top: 0.75rem;
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
   background: var(--color-background);
   text-align: center;
 }
@@ -55,9 +56,12 @@ function formatRate(rate) {
 small,
 p {
   color: var(--color-text-muted);
+  font-size: 0.7rem;
 }
 
 h3 {
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
+  font-size: clamp(0.9rem, 3.5vw, 1.25rem);
+  overflow-wrap: anywhere;
 }
 </style>
