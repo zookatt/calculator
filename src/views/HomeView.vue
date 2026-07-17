@@ -30,7 +30,7 @@ import WeatherSection from "../components/weather/WeatherSection.vue";
 
 <style scoped>
 .app-shell {
-  width: min(calc(100% - 1rem), 70rem);
+  width: min(calc(100% - 1rem), 44rem);
   margin-inline: auto;
   padding-block: 0.5rem 1.5rem;
 }
@@ -50,34 +50,19 @@ import WeatherSection from "../components/weather/WeatherSection.vue";
   flex: 1;
 }
 
-.calculator-panel {
+.dashboard-panel {
   width: min(100%, 32rem);
   margin-inline: auto;
 }
 
 @media (min-width: 48rem) {
   .app-shell {
-    width: min(calc(100% - 2rem), 70rem);
+    width: min(calc(100% - 2rem), 44rem);
     padding-block: 1rem 2rem;
   }
 
   .dashboard {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
-    align-items: stretch;
-  }
-
-  .weather-panel {
-    grid-column: 1;
-  }
-
-  .currency-panel {
-    grid-column: 2;
-  }
-
-  .calculator-panel {
-    grid-column: 1 / -1;
   }
 }
 </style>

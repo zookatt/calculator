@@ -2,9 +2,28 @@
 @import url("./reset.css");
 
 body {
+  min-width: 20rem;
+  overflow-x: hidden;
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
 }
 
 #app {
