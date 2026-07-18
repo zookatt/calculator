@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 import CurrencyForm from "./CurrencyForm.vue";
 import CurrencyOutput from "./CurrencyOutput.vue";
@@ -13,6 +13,7 @@ const rates = ref(null);
 const loading = ref(true);
 const apiError = ref("");
 const isExpanded = ref(false);
+let desktopMediaQuery;
 
 const amountError = computed(() => {
   const numericAmount = Number(amount.value);
@@ -69,8 +70,22 @@ async function loadRates() {
   }
 }
 
+function updateExpandedState(event) {
+  isExpanded.value = event.matches;
+}
+
 onMounted(() => {
   loadRates();
+
+  if (typeof window.matchMedia === "function") {
+    desktopMediaQuery = window.matchMedia("(min-width: 48rem)");
+    isExpanded.value = desktopMediaQuery.matches;
+    desktopMediaQuery.addEventListener("change", updateExpandedState);
+  }
+});
+
+onBeforeUnmount(() => {
+  desktopMediaQuery?.removeEventListener("change", updateExpandedState);
 });
 </script>
 
