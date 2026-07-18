@@ -86,7 +86,11 @@ test("saves and recalls a number from memory", async ({ page }) => {
 });
 
 test("converts euros to dollars", async ({ page }) => {
-  await page.getByTestId("currency-toggle").click();
+  const currencyToggle = page.getByTestId("currency-toggle");
+
+  if ((await currencyToggle.getAttribute("aria-expanded")) === "false") {
+    await currencyToggle.click();
+  }
 
   await expect(page.getByTestId("converted-amount")).toHaveText(
     "125.00 USD",

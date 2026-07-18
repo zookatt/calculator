@@ -94,8 +94,14 @@ function getButtonLabel(button) {
   }
 
   .calc-button {
-    min-height: 3.75rem;
+    min-height: 3.25rem;
     font-size: 1rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .calc-button {
+    min-height: 3.5rem;
   }
 }
 </style>
